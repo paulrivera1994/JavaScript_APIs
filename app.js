@@ -20,7 +20,9 @@ searchButton.addEventListener("click", () => {
       return results;
     })
     .then((res) => {
+      feedbackP.textContent = "";
       img.src = res.data.images.original.url;
+      searchInput.value = "";
     })
     .catch((err) => {
       console.error(err);
