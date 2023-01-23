@@ -11,9 +11,9 @@ feedback.id = "feedback";
 container.append(feedback);
 const feedbackP = document.getElementById("feedback");
 
-searchButton.addEventListener("click", () => {
+function displayImg(searchText) {
   fetch(
-    `https://api.giphy.com/v1/gifs/translate?api_key=Bk7OloiJN4yJ5XYY0P38JgDnmS8wQJfj&s=${searchInput.value}`
+    `https://api.giphy.com/v1/gifs/translate?api_key=Bk7OloiJN4yJ5XYY0P38JgDnmS8wQJfj&s=${searchText}`
   )
     .then((res) => {
       const results = res.json();
@@ -28,4 +28,8 @@ searchButton.addEventListener("click", () => {
       console.error(err);
       feedbackP.textContent = err.message;
     });
+}
+
+searchButton.addEventListener("click", () => {
+  displayImg(searchInput.value);
 });
